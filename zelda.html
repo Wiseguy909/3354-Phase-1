@@ -1,15 +1,14 @@
-
-<!-- saved from url=(0205)https://alt-6093de9f52e1b.blackboard.com/courses/1/2252-merged-CE3354005-CS3354005/groups/_280432_1//_16185800_1/zelda.html?one_hash=AF898597CD90495AE73F38733795345E&f_hash=D70C6F1BBDD7C53F7C45B68240654D4B -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<html> 
+<head>
   <style>
    *{padding: 0; margin:0;}
    canvas{ background: #eee; display: block; margin: 0 auto;}
    </style>
 </head>
 <body>
-<canvas id="myCanvas" width="256" height="240"></canvas>
-<xxxx src="mapsFileEdited-2.js"></xxxx>
-<xxxx type="xxxx/xxxxxxxxxx">
+<canvas id= "myCanvas" width="256" height="240"></canvas>
+<script src="mapsFileEdited-2.js"></script>
+<script type="text/javascript">
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
 document.addEventListener("keydown",keyDownHandler, false);
@@ -119,18 +118,18 @@ function keyDownHandler(e){
 	   lastButtonPressed = "down";
 	}
 	
-	if(e.keyCode == 32 &amp;&amp; canAttackAgain){
+	if(e.keyCode == 32 && canAttackAgain){
             isAttacking = true;
 			currentAnimation = 0;
 			canAttackAgain = false;
 			playSound("./sounds/LOZ_sword_slash.wav")
         }
-	if(e.keyCode == 13 &amp;&amp; !hasGameStarted)
+	if(e.keyCode == 13 && !hasGameStarted)
 	{
 		hasGameStarted = true;
 		backgroundMusic.play();
 	}
-	if(e.keyCode == 13 &amp;&amp; hasGameStarted)
+	if(e.keyCode == 13 && hasGameStarted)
 	{
 		if(!needInventoryScreen)
 		{
@@ -165,9 +164,9 @@ function keyUpHandler(e){
 
 function drawMap(level)
 {
-	for(let i = 0; i &lt; level.length; i++)
+	for(let i = 0; i < level.length; i++)
 	{
-		for(let j = 0; j &lt; level[i].length; j++)
+		for(let j = 0; j < level[i].length; j++)
 		{
 			ctx.drawImage(worldTiles, ((level[i][j]%18) * 17) + 1,
 			(Math.floor(level[i][j]/18) * 17) + 1, 
@@ -185,22 +184,22 @@ function drawLink()
 	{
 		if(linkX != linkBounceX)
 		{
-			if(linkBounceX &gt; linkX)
+			if(linkBounceX > linkX)
 			{
 				linkX += 2;
 			}
-			else if(linkBounceX &lt; linkX)
+			else if(linkBounceX < linkX)
 			{
 				linkX -= 2;
 			}
 		}
 		else if(linkY != linkBounceY)
 		{
-			if(linkBounceY &gt; linkY)
+			if(linkBounceY > linkY)
 			{
 				linkY += 2;
 			}
-			else if(linkBounceY &lt; linkY)
+			else if(linkBounceY < linkY)
 			{
 				linkY -= 2;
 			}
@@ -208,7 +207,7 @@ function drawLink()
 		else
 		{
 			linkNeedsToBounce = false;
-			if(currentLinkHearts &lt;= 0)
+			if(currentLinkHearts <= 0)
 			{
 				
 			}
@@ -239,7 +238,7 @@ function drawLink()
 	else if(playPickUpItemAnimation)
 	{
 		animationCounter++;
-		if(animationCounter &lt; 300)
+		if(animationCounter < 300)
 		{
 			ctx.drawImage(link1, 1, 150, 
 			16, 16, linkX, linkY, 16, 16);	
@@ -309,7 +308,7 @@ function drawLink()
 	}
 	else
 	{
-	if(isAttacking &amp;&amp; hasSword)
+	if(isAttacking && hasSword)
 	{
 		if(currentAnimation == 0)
 			{
@@ -369,11 +368,11 @@ function drawLink()
 							false, false, "right");
 				};
 			}
-			if(animationCounter &gt;= 6)
+			if(animationCounter >= 6)
 			{
 				currentAnimation++;
 				animationCounter = 0;
-				if(currentAnimation &gt; 1)
+				if(currentAnimation > 1)
 				{
 					currentAnimation = 0;
 					isAttacking = false;
@@ -382,7 +381,7 @@ function drawLink()
 				}
 			}
 	}
-	else if(leftPressed &amp;&amp; !collision2(linkX - speed, linkY, gameMap))
+	else if(leftPressed && !collision2(linkX - speed, linkY, gameMap))
 	{
 			linkX -= speed;
 			if(currentAnimation == 0)
@@ -393,17 +392,17 @@ function drawLink()
 			{
 				ctx.drawImage(link1, 30, 30, 16, 16,linkX, linkY, 16, 16);
 			}
-			if(animationCounter &gt;= 6)
+			if(animationCounter >= 6)
 			{
 				currentAnimation++;
 				animationCounter = 0;
-				if(currentAnimation &gt; 1)
+				if(currentAnimation > 1)
 				{
 					currentAnimation = 0;
 				}
 			}
 	}
-	else if(rightPressed &amp;&amp; !collision2(linkX + speed, linkY, gameMap))
+	else if(rightPressed && !collision2(linkX + speed, linkY, gameMap))
 	{
 		linkX += speed;
 		if(currentAnimation == 0)
@@ -414,17 +413,17 @@ function drawLink()
 			{
 				ctx.drawImage(link1, 91, 30, 16, 16,linkX, linkY, 16, 16);
 			}
-			if(animationCounter &gt;= 6)
+			if(animationCounter >= 6)
 			{
 				currentAnimation++;
 				animationCounter = 0;
-				if(currentAnimation &gt; 1)
+				if(currentAnimation > 1)
 				{
 					currentAnimation = 0;
 				}
 			}
 	}
-	else if(upPressed &amp;&amp; !collision2(linkX, linkY - speed, gameMap))
+	else if(upPressed && !collision2(linkX, linkY - speed, gameMap))
 	{
 		linkY -= speed;
 		if(currentAnimation == 0)
@@ -435,17 +434,17 @@ function drawLink()
 			{
 				ctx.drawImage(link1, 62, 30, 16, 16,linkX, linkY, 16, 16);
 			}
-			if(animationCounter &gt;= 6)
+			if(animationCounter >= 6)
 			{
 				currentAnimation++;
 				animationCounter = 0;
-				if(currentAnimation &gt; 1)
+				if(currentAnimation > 1)
 				{
 					currentAnimation = 0;
 				}
 			}
 	}
-	else if(downPressed &amp;&amp; !collision2(linkX, linkY + speed, gameMap))
+	else if(downPressed && !collision2(linkX, linkY + speed, gameMap))
 	{
 		linkY += speed;
 		if(currentAnimation == 0)
@@ -456,11 +455,11 @@ function drawLink()
 			{
 				ctx.drawImage(link1, 0, 30, 16, 16,linkX, linkY, 16, 16);
 			}
-			if(animationCounter &gt;= 6)
+			if(animationCounter >= 6)
 			{
 				currentAnimation++;
 				animationCounter = 0;
-				if(currentAnimation &gt; 1)
+				if(currentAnimation > 1)
 				{
 					currentAnimation = 0;
 				}
@@ -504,63 +503,63 @@ function collision2(x, y, map)
 	
 	blocks = [];
 	
-	for(let i = 0; i &lt; map.length; i++)
+	for(let i = 0; i < map.length; i++)
 	{
-		for(let j = 0; j &lt; map[i].length; j++)
+		for(let j = 0; j < map[i].length; j++)
 			{
-				if(map[i][j] != 2 &amp;&amp; map[i][j] != 28 &amp;&amp;
+				if(map[i][j] != 2 && map[i][j] != 28 &&
 				map[i][j] != 18
-				&amp;&amp; map[i][j] != 6
-				&amp;&amp; map[i][j] != 12
-				&amp;&amp; map[i][j] != 14
-				&amp;&amp; map[i][j] != 24
-				&amp;&amp; map[i][j] != 30
-				&amp;&amp; map[i][j] != 34
-				&amp;&amp; map[i][j] != 58
-				&amp;&amp; map[i][j] != 64
-				&amp;&amp; map[i][j] != 70
-				&amp;&amp; map[i][j] != 75
-				&amp;&amp; map[i][j] != 76
-				&amp;&amp; map[i][j] != 77
-				&amp;&amp; map[i][j] != 93
-				&amp;&amp; map[i][j] != 94
-				&amp;&amp; map[i][j] != 95
-				&amp;&amp; map[i][j] != 111
-				&amp;&amp; map[i][j] != 112
-				&amp;&amp; map[i][j] != 113
-				&amp;&amp; map[i][j] != 81
-				&amp;&amp; map[i][j] != 82
-				&amp;&amp; map[i][j] != 83
-				&amp;&amp; map[i][j] != 99
-				&amp;&amp; map[i][j] != 100
-				&amp;&amp; map[i][j] != 101
-				&amp;&amp; map[i][j] != 117
-				&amp;&amp; map[i][j] != 118
-				&amp;&amp; map[i][j] != 119
-				&amp;&amp; map[i][j] != 87
-				&amp;&amp; map[i][j] != 88
-				&amp;&amp; map[i][j] != 89
-				&amp;&amp; map[i][j] != 105
-				&amp;&amp; map[i][j] != 106
-				&amp;&amp; map[i][j] != 107
-				&amp;&amp; map[i][j] != 123
-				&amp;&amp; map[i][j] != 124
-				&amp;&amp; map[i][j] != 125
-				&amp;&amp; map[i][j] != 126
-				&amp;&amp; map[i][j] != 127
-				&amp;&amp; map[i][j] != 128
-				&amp;&amp; map[i][j] != 129
-				&amp;&amp; map[i][j] != 131
-				&amp;&amp; map[i][j] != 132
-				&amp;&amp; map[i][j] != 133
-				&amp;&amp; map[i][j] != 134
-				&amp;&amp; map[i][j] != 135
-				&amp;&amp; map[i][j] != 137
-				&amp;&amp; map[i][j] != 138
-				&amp;&amp; map[i][j] != 139
-				&amp;&amp; map[i][j] != 140
-				&amp;&amp; map[i][j] != 141
-				&amp;&amp; map[i][j] != 143
+				&& map[i][j] != 6
+				&& map[i][j] != 12
+				&& map[i][j] != 14
+				&& map[i][j] != 24
+				&& map[i][j] != 30
+				&& map[i][j] != 34
+				&& map[i][j] != 58
+				&& map[i][j] != 64
+				&& map[i][j] != 70
+				&& map[i][j] != 75
+				&& map[i][j] != 76
+				&& map[i][j] != 77
+				&& map[i][j] != 93
+				&& map[i][j] != 94
+				&& map[i][j] != 95
+				&& map[i][j] != 111
+				&& map[i][j] != 112
+				&& map[i][j] != 113
+				&& map[i][j] != 81
+				&& map[i][j] != 82
+				&& map[i][j] != 83
+				&& map[i][j] != 99
+				&& map[i][j] != 100
+				&& map[i][j] != 101
+				&& map[i][j] != 117
+				&& map[i][j] != 118
+				&& map[i][j] != 119
+				&& map[i][j] != 87
+				&& map[i][j] != 88
+				&& map[i][j] != 89
+				&& map[i][j] != 105
+				&& map[i][j] != 106
+				&& map[i][j] != 107
+				&& map[i][j] != 123
+				&& map[i][j] != 124
+				&& map[i][j] != 125
+				&& map[i][j] != 126
+				&& map[i][j] != 127
+				&& map[i][j] != 128
+				&& map[i][j] != 129
+				&& map[i][j] != 131
+				&& map[i][j] != 132
+				&& map[i][j] != 133
+				&& map[i][j] != 134
+				&& map[i][j] != 135
+				&& map[i][j] != 137
+				&& map[i][j] != 138
+				&& map[i][j] != 139
+				&& map[i][j] != 140
+				&& map[i][j] != 141
+				&& map[i][j] != 143
 				)
 				{
 					blocks.push(new Point(i, j));
@@ -568,12 +567,12 @@ function collision2(x, y, map)
 			}
 	}
 
-	for(let i = 0; i &lt; blocks.length; i++)
+	for(let i = 0; i < blocks.length; i++)
 		{
-			if (x +4&lt;= blocks[i].col*16 + 16 &amp;&amp;
-			   x + 12 &gt;= blocks[i].col*16 &amp;&amp;
-			   y + 10 &lt;= blocks[i].row*16 + 16 &amp;&amp;
-			   y + 16 &gt;= blocks[i].row*16 ) {
+			if (x +4<= blocks[i].col*16 + 16 &&
+			   x + 12 >= blocks[i].col*16 &&
+			   y + 10 <= blocks[i].row*16 + 16 &&
+			   y + 16 >= blocks[i].row*16 ) {
 					return true;
 				}
 		}
@@ -582,7 +581,7 @@ function collision2(x, y, map)
 
 function drawGameObjects()
 {
-	for(let i = 0; i &lt; gameObjects.length; i++)
+	for(let i = 0; i < gameObjects.length; i++)
 	{
 		if(gameObjects[i].isSaleRupee)
 		{
@@ -591,7 +590,7 @@ function drawGameObjects()
 			{
 				gameObjects[i].rupeeImage+=1;
 			}
-			if(gameObjects[i].rupeeImage &gt; 1)
+			if(gameObjects[i].rupeeImage > 1)
 			{
 				gameObjects[i].rupeeImage = 0;
 			}
@@ -761,7 +760,7 @@ function drawGameObjects()
 			{
 				gameObjects[i].rupeeImage+=1;
 			}
-			if(gameObjects[i].rupeeImage &gt; 1)
+			if(gameObjects[i].rupeeImage > 1)
 			{
 				gameObjects[i].rupeeImage = 0;
 			}
@@ -798,7 +797,7 @@ function drawGameObjects()
 			{
 				gameObjects[i].rupeeImage+=1;
 			}
-			if(gameObjects[i].rupeeImage &gt; 1)
+			if(gameObjects[i].rupeeImage > 1)
 			{
 				gameObjects[i].rupeeImage = 0;
 			}
@@ -862,7 +861,7 @@ function drawGameObjects()
 						gameObjects.push(gO);
 						
 					}
-					if(gameObjects[i].shootCounter &gt; 130)
+					if(gameObjects[i].shootCounter > 130)
 					{
 						gameObjects[i].needsToShoot = false;
 						gameObjects[i].shootCounter = 0;
@@ -871,8 +870,8 @@ function drawGameObjects()
 				}
 				else
 				{
-					if(gameObjects[i].enemyPath[gameObjects[i].enemyPath.length - 1] != null &amp;&amp; 
-					gameObjects[i].nextX == gameObjects[i].x &amp;&amp; 
+					if(gameObjects[i].enemyPath[gameObjects[i].enemyPath.length - 1] != null && 
+					gameObjects[i].nextX == gameObjects[i].x && 
 					gameObjects[i].nextY == gameObjects[i].y)
 					{
 						console.log("end of current node");
@@ -882,7 +881,7 @@ function drawGameObjects()
 						if(i == 1)
 						{
 							console.log("This enemy now as a path of: ");
-							for(let j = 0; j &lt; gameObjects[i].enemyPath.length; j++)
+							for(let j = 0; j < gameObjects[i].enemyPath.length; j++)
 							{
 								console.log("Path at " + j + " is :  " + gameObjects[i].enemyPath[j].r + "    and    "  + gameObjects[i].enemyPath[j].c);
 							}
@@ -894,11 +893,11 @@ function drawGameObjects()
 						}
 					}
 				}
-				if(gameObjects[i].counter &gt;= 10)
+				if(gameObjects[i].counter >= 10)
 				{
 					gameObjects[i].frame++;
 					gameObjects[i].counter = 0;
-					if(gameObjects[i].frame &gt; 1)
+					if(gameObjects[i].frame > 1)
 					{
 						gameObjects[i].frame = 0;
 					}
@@ -1018,22 +1017,22 @@ function drawGameObjects()
 				{
 					if(gameObjects[i].x != gameObjects[i].bounceX)
 					{
-						if(gameObjects[i].bounceX &gt; gameObjects[i].x)
+						if(gameObjects[i].bounceX > gameObjects[i].x)
 						{
 							gameObjects[i].x += 4;
 						}
-						else if(gameObjects[i].bounceX &lt; gameObjects[i].x)
+						else if(gameObjects[i].bounceX < gameObjects[i].x)
 						{
 							gameObjects[i].x -= 4;
 						}
 					}
 					else if(gameObjects[i].y != gameObjects[i].bounceY)
 					{
-						if(gameObjects[i].bounceY &gt; gameObjects[i].y)
+						if(gameObjects[i].bounceY > gameObjects[i].y)
 						{
 							gameObjects[i].y += 4;
 						}
-						else if(gameObjects[i].bounceY &lt; gameObjects[i].y)
+						else if(gameObjects[i].bounceY < gameObjects[i].y)
 						{
 							gameObjects[i].y -= 4;
 						}
@@ -1041,12 +1040,12 @@ function drawGameObjects()
 					else
 					{
 						gameObjects[i].needsBounce = false;
-						if(gameObjects[i].health &lt;= 0)
+						if(gameObjects[i].health <= 0)
 						{
 							//console.log("its health is: " + gameObjects[i].health);
 							
 							let rupeeChance = Math.floor(Math.random()*10);
-							if(rupeeChance &lt; 2)
+							if(rupeeChance < 2)
 							{
 								gO = new GameObject()
 								gO.x = gameObjects[i].x + 4;
@@ -1065,7 +1064,7 @@ function drawGameObjects()
 				{
 					if(gameObjects[i].x != gameObjects[i].nextX)
 					{
-						if(gameObjects[i].nextX &gt; gameObjects[i].x)
+						if(gameObjects[i].nextX > gameObjects[i].x)
 						{
 							if(gameObjects[i].counter% gameObjects[i].speed == 0)
 							{
@@ -1073,7 +1072,7 @@ function drawGameObjects()
 							}
 							gameObjects[i].direction = "right";
 						}
-						else if(gameObjects[i].nextX &lt; gameObjects[i].x)
+						else if(gameObjects[i].nextX < gameObjects[i].x)
 						{
 							if(gameObjects[i].counter% gameObjects[i].speed == 0)
 							{
@@ -1085,7 +1084,7 @@ function drawGameObjects()
 					}
 					else if(gameObjects[i].y != gameObjects[i].nextY)
 					{
-						if(gameObjects[i].nextY &gt; gameObjects[i].y)
+						if(gameObjects[i].nextY > gameObjects[i].y)
 						{
 							if(gameObjects[i].counter% gameObjects[i].speed == 0)
 							{
@@ -1093,7 +1092,7 @@ function drawGameObjects()
 							}
 							gameObjects[i].direction = "down";
 						}
-						else if(gameObjects[i].nextY &lt; gameObjects[i].y)
+						else if(gameObjects[i].nextY < gameObjects[i].y)
 						{
 							if(gameObjects[i].counter% gameObjects[i].speed == 0)
 							{
@@ -1113,7 +1112,7 @@ function drawGameObjects()
 			if(gameObjects[i].enemyType == 2)
 			{
 				gameObjects[i].counter++;
-				if(gameObjects[i].counter &lt; 240)
+				if(gameObjects[i].counter < 240)
 				{
 					ctx.drawImage(enemies, 180, 300, 16, 16, 
 						gameObjects[i].x, gameObjects[i].y, 16, 16);
@@ -1135,17 +1134,17 @@ function drawGameObjects()
 					gO.angle = angle;
 					gameObjects.push(gO);
 				}
-				else if(gameObjects[i].counter &lt; 420)
+				else if(gameObjects[i].counter < 420)
 				{
 					//hide under water
 				}
-				else if(gameObjects[i].counter &gt; 420)
+				else if(gameObjects[i].counter > 420)
 				{
 					//move coords
 					let count = 0;
 					let newCol = Math.floor(Math.random() * 16);
 					let newRow = Math.floor(Math.random() * 11) + 4;
-					while(count &lt; 10 || gameMap[newRow][newCol] != 91)
+					while(count < 10 || gameMap[newRow][newCol] != 91)
 					{
 						count++;
 						newCol = Math.floor(Math.random() * 16);
@@ -1179,8 +1178,8 @@ function drawGameObjects()
 				}
 				gameObjects[i].x += Math.cos(gameObjects[i].angle);
 				gameObjects[i].y += Math.sin(gameObjects[i].angle);
-				if(gameObjects[i].x &lt; 0 || gameObjects[i].x &gt; 256 ||
-				gameObjects[i].y &lt; 0 || gameObjects[i].y &gt; 240)
+				if(gameObjects[i].x < 0 || gameObjects[i].x > 256 ||
+				gameObjects[i].y < 0 || gameObjects[i].y > 240)
 				{
 					gameObjects.splice(i, 1);
 				}
@@ -1245,13 +1244,13 @@ function aStar(start, end, maze)
 	
 	open_list.push(start_Node);
 	
-	while(open_list.length &gt; 0)
+	while(open_list.length > 0)
 	{
 		current_node = open_list[0];
 		current_index = 0;
-		 for(let i = 0; i &lt; open_list.length; i++)
+		 for(let i = 0; i < open_list.length; i++)
 		 {
-			if(open_list[i].f &lt; current_node.f)
+			if(open_list[i].f < current_node.f)
 			{
 				current_node = open_list[i];
 				current_index = i;
@@ -1259,7 +1258,7 @@ function aStar(start, end, maze)
 		 }
 		open_list.splice(current_index, 1);
 		closed_list.push(current_node);
-		if(current_node.position.r == end_Node.position.r &amp;&amp;
+		if(current_node.position.r == end_Node.position.r &&
 		current_node.position.c == end_Node.position.c)
 		{
 			let path = [];
@@ -1276,11 +1275,11 @@ function aStar(start, end, maze)
 		let children = [];
 		//let positions = [{0,-1}, {0, 1}, {1, 0}, {-1, 0}];
 		let positions = [new Pos(0,-1), new Pos(0,1), new Pos(1,0), new Pos(-1,0)];
-		for(let i = 0; i &lt; positions.length; i++)
+		for(let i = 0; i < positions.length; i++)
 		{
 			node_position = new Pos(current_node.position.r + positions[i].r, current_node.position.c + positions[i].c);
 			
-			if(node_position.r &gt; (maze.length - 1) || node_position.r &lt; 0 || node_position.c &gt; (maze[0].length - 1) || node_position.c &lt; 0)
+			if(node_position.r > (maze.length - 1) || node_position.r < 0 || node_position.c > (maze[0].length - 1) || node_position.c < 0)
             {
 				//console.log("Breaking at i: " + i);
 				continue;
@@ -1297,11 +1296,11 @@ function aStar(start, end, maze)
 			children.push(new_node);
 		}
 		
-		for(let i = 0; i &lt; children.length; i++)
+		for(let i = 0; i < children.length; i++)
 		{
-			for(let j = 0; j &lt; closed_list.length; j++)
+			for(let j = 0; j < closed_list.length; j++)
 			{
-				if(children[i].position.r == closed_list[j].position.r &amp;&amp;
+				if(children[i].position.r == closed_list[j].position.r &&
 					children[i].position.c == closed_list[j].position.c)
                     continue;
 			}
@@ -1311,11 +1310,11 @@ function aStar(start, end, maze)
 			((children[i].position.c - end_Node.position.c)*(children[i].position.c - end_Node.position.c))
             children[i].f = children[i].g + children[i].h;
 			
-			for(let j = 0; j &lt; open_list.length; j++)
+			for(let j = 0; j < open_list.length; j++)
 			{
-				if(children[i].position.r == open_list[j].position.r &amp;&amp;
-					children[i].position.c == open_list[j].position.c &amp;&amp;
-					children[i].g &gt; open_list[j].g)
+				if(children[i].position.r == open_list[j].position.r &&
+					children[i].position.c == open_list[j].position.c &&
+					children[i].g > open_list[j].g)
                     continue;
 			}
 			
@@ -1330,9 +1329,12 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb,
 {
 	if(isLink)
 	{
-		for(let i = 0; i <xxxxxxs.length; i++)="" {="" if="" (x="" <="objects[i].x" +="" objects[i].width="" &&="" x="" 16="">= objects[i].x &amp;&amp;
-				   y  &lt;= objects[i].y + objects[i].height &amp;&amp;
-				   y + 16 &gt;= objects[i].y ) {
+		for(let i = 0; i < objects.length; i++)
+			{
+				if (x <= objects[i].x + objects[i].width &&
+				   x + 16 >= objects[i].x &&
+				   y  <= objects[i].y + objects[i].height &&
+				   y + 16 >= objects[i].y ) {
 						if(objects[i].isPortal)
 						{
 							
@@ -1407,7 +1409,7 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb,
 									playPickUpItemAnimation = true;
 									break;
 								case 3:
-									if(objects[i].isSaleItem &amp;&amp; rupeeAmount &gt;= objects[i].cost)
+									if(objects[i].isSaleItem && rupeeAmount >= objects[i].cost)
 									{
 										lastPickUpItem = 3;
 										animationCounter = 0;
@@ -1520,7 +1522,7 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb,
 									destroySaleItems(objects);
 									break;
 								case 15:
-									if(objects[i].isSaleItem &amp;&amp; rupeeAmount &gt;= objects[i].cost)
+									if(objects[i].isSaleItem && rupeeAmount >= objects[i].cost)
 									{
 										lastPickUpItem = 15;
 										rupeeAmount -= objects[i].cost;
@@ -1531,7 +1533,7 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb,
 									}
 									break;
 								case 16:
-									if(objects[i].isSaleItem &amp;&amp; rupeeAmount &gt;= objects[i].cost)
+									if(objects[i].isSaleItem && rupeeAmount >= objects[i].cost)
 									{
 										lastPickUpItem = 16;
 										rupeeAmount -= objects[i].cost;
@@ -1547,16 +1549,16 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb,
 							
 							break;
 						}
-						if((objects[i].waterProjectile || objects[i].rockProjectile || objects[i].isEnemy) &amp;&amp; !linkNeedsToBounce &amp;&amp; !linkIsInvincible)
+						if((objects[i].waterProjectile || objects[i].rockProjectile || objects[i].isEnemy) && !linkNeedsToBounce && !linkIsInvincible)
 						{
 							//
 							//linkNeedsToBounce = true;
 							//getBounceLocLink(objects[i].direction);
-							if(objects[i].rockProjectile &amp;&amp; 
-							((lastButtonPressed == "up" &amp;&amp;  objects[i].ySpeed &gt;0) || 
-							(lastButtonPressed == "down" &amp;&amp;  objects[i].ySpeed &lt;0) ||
-							(lastButtonPressed == "left" &amp;&amp;  objects[i].xSpeed &gt;0) ||
-							(lastButtonPressed == "right" &amp;&amp;  objects[i].xSpeed &lt;0)))
+							if(objects[i].rockProjectile && 
+							((lastButtonPressed == "up" &&  objects[i].ySpeed >0) || 
+							(lastButtonPressed == "down" &&  objects[i].ySpeed <0) ||
+							(lastButtonPressed == "left" &&  objects[i].xSpeed >0) ||
+							(lastButtonPressed == "right" &&  objects[i].xSpeed <0)))
 							{
 								playSound("./sounds/LOZ_shield.wav");
 								objects.splice(i,1);
@@ -1570,7 +1572,7 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb,
 							currentLinkHearts -= .5;
 							linkIsInvincible = true;
 							invincibleTime = 30;
-							if(currentLinkHearts &lt;= 0)
+							if(currentLinkHearts <= 0)
 							{
 								//link has died
 							}
@@ -1596,9 +1598,14 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb,
 			swordH = 11;
 		}
 		
-		for(let i = 0; i <xxxxxxs.length; i++)="" {="" if(lastbuttonpressed="=" "left")="" if="" (x="" +="" 2="" <="objects[i].x" objects[i].width="" &&="" x="" swordw="">= objects[i].x &amp;&amp;
-					y + 6  &lt;= objects[i].y + objects[i].height &amp;&amp;
-					y + 6 + swordH &gt;= objects[i].y ) 
+		for(let i = 0; i < objects.length; i++)
+			{
+				if(lastButtonPressed == "left")
+				{
+					if (x + 2 <= objects[i].x + objects[i].width &&
+					x + 2 + swordW>= objects[i].x &&
+					y + 6  <= objects[i].y + objects[i].height &&
+					y + 6 + swordH >= objects[i].y ) 
 					{
 						//ctx.fillRect(x + 2, (y+6), swordW, swordH);
 						if(objects[i].isEnemy)
@@ -1621,10 +1628,10 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb,
 				}
 				else if(lastButtonPressed == "right")
 				{
-					if (x - 2&lt;= objects[i].x + objects[i].width &amp;&amp;
-					x - 2 + swordW&gt;= objects[i].x &amp;&amp;
-					y + 6  &lt;= objects[i].y + objects[i].height &amp;&amp;
-					y + 6 + swordH &gt;= objects[i].y ) 
+					if (x - 2<= objects[i].x + objects[i].width &&
+					x - 2 + swordW>= objects[i].x &&
+					y + 6  <= objects[i].y + objects[i].height &&
+					y + 6 + swordH >= objects[i].y ) 
 					{
 						//ctx.fillRect(x - 2, (y+6), swordW, swordH);
 						if(objects[i].isEnemy)
@@ -1647,10 +1654,10 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb,
 				}
 				else if(lastButtonPressed == "up")
 				{
-					if (x - 2 &lt;= objects[i].x + objects[i].width &amp;&amp;
-					x - 2  + swordW&gt;= objects[i].x &amp;&amp;
-					y   &lt;= objects[i].y + objects[i].height &amp;&amp;
-					y  + swordH &gt;= objects[i].y ) 
+					if (x - 2 <= objects[i].x + objects[i].width &&
+					x - 2  + swordW>= objects[i].x &&
+					y   <= objects[i].y + objects[i].height &&
+					y  + swordH >= objects[i].y ) 
 					{
 						//ctx.fillRect(x - 2, y, swordW, swordH);
 						if(objects[i].isEnemy)
@@ -1673,10 +1680,10 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb,
 				}
 				else{
 				
-					if (x &lt;= objects[i].x + objects[i].width &amp;&amp;
-					x + swordW&gt;= objects[i].x &amp;&amp;
-					y  &lt;= objects[i].y + objects[i].height &amp;&amp;
-					y + swordH &gt;= objects[i].y ) 
+					if (x <= objects[i].x + objects[i].width &&
+					x + swordW>= objects[i].x &&
+					y  <= objects[i].y + objects[i].height &&
+					y + swordH >= objects[i].y ) 
 					{
 						//ctx.fillRect(x, y, swordW, swordH);
 						if(objects[i].isEnemy)
@@ -1703,7 +1710,80 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb,
 
 function destroySaleItems(objects)
 {
-	for(let j = 0; j <xxxxxxs.length; j++)="" {="" if(objects[j].issaleitem)="" objects.splice(j,1);="" j--;="" }="" function="" getbounceloc(gobject,="" ignoresobjects,="" direction)="" let="" currrow="Math.floor(gObject.y/16);" currcol="Math.floor(gObject.x/16);" if(direction="=" "up")="" if(gamemap[currrow-1][currcol]="=" 2)="" gobject.bouncey="gObject.y" -="" 16="" ;="" gobject.bouncex="gObject.x;" else="" "down")="" if(gamemap[currrow+1][currcol]="=" +="" "left")="" if(gamemap[currrow][currcol-1]="=" "right")="" if(gamemap[currrow][currcol+1]="=" console.log("new="" bx="" and="" by="" is:="" "="" gobject.bouncey);="" getbounceloclink(direction)="" linkbouncex="linkX;" linkbouncey="linkY;" <!--="" --="">
+	for(let j = 0; j < objects.length; j++)
+	{
+		if(objects[j].isSaleItem)
+		{
+			objects.splice(j,1);
+			j--;
+		}
+	}
+}
+
+function getBounceLoc(gObject, ignoresObjects, direction)
+{
+	let currRow = Math.floor(gObject.y/16);
+	let currCol = Math.floor(gObject.x/16);
+	if(direction == "up")
+	{
+		if(gameMap[currRow-1][currCol] == 2)
+		{
+			gObject.bounceY = gObject.y - 16 ;
+			gObject.bounceX = gObject.x;
+		}
+		else
+		{
+			gObject.bounceY = gObject.y;
+			gObject.bounceX = gObject.x;
+		}
+	}
+	if(direction == "down")
+	{
+		if(gameMap[currRow+1][currCol] == 2)
+		{
+			gObject.bounceY = gObject.y + 16 ;
+			gObject.bounceX = gObject.x;
+		}
+		else
+		{
+			gObject.bounceY = gObject.y;
+			gObject.bounceX = gObject.x;
+		}
+	}
+	if(direction == "left")
+	{
+		if(gameMap[currRow][currCol-1] == 2)
+		{
+			gObject.bounceX = gObject.x - 16 ;
+			gObject.bounceY = gObject.y;
+		}
+		else
+		{
+			gObject.bounceY = gObject.y;
+			gObject.bounceX = gObject.x;
+		}
+	}
+	if(direction == "right")
+	{
+		if(gameMap[currRow][currCol+1] == 2)
+		{
+			gObject.bounceX = gObject.x + 16 ;
+			gObject.bounceY = gObject.y;
+		}
+		else
+		{
+			gObject.bounceY = gObject.y;
+			gObject.bounceX = gObject.x;
+		}
+	}
+	//console.log("New bx and by is: " + gObject.bounceX + "  " + gObject.bounceY);
+}
+
+function getBounceLocLink(direction)
+{
+	linkBounceX = linkX;
+	linkBounceY = linkY;
+	<!-- if(direction == "up") -->
 	<!-- { -->
 		<!-- while(!linkCollision(linkX, linkBounceY - 2, gameObjects) &&  -->
 				<!-- linkY - 16 !=  linkBounceY) -->
@@ -1752,11 +1832,11 @@ function drawHUD(offset)
 	//draw Hearts
 	let fullHearts = Math.floor(currentLinkHearts)
 	let halfHearts = currentLinkHearts - fullHearts;
-	for(let i = 0; i &lt; linkHearts; i++)
+	for(let i = 0; i < linkHearts; i++)
 	{
 		let heartY = 40;
 		let heartX = 176 + (i * 8);
-		if(i &gt; 7)
+		if(i > 7)
 			{
 				heartY = 40 - 8;
 				heartX -= 64;
@@ -1770,11 +1850,11 @@ function drawHUD(offset)
 	}
 	let halfHeartX = 0;
 	let halfHeartY = 0;
-	for(let i = 0; i &lt; fullHearts; i++)
+	for(let i = 0; i < fullHearts; i++)
 	{
 		let heartY = 40;
 		let heartX = 176 + (i * 8);
-		if(i &gt; 7)
+		if(i > 7)
 			{
 				heartY = 40 - 8;
 				heartX -= 64;
@@ -1788,7 +1868,7 @@ function drawHUD(offset)
 		if(i == fullHearts - 1)
 		{
 			
-			if(i &gt; 6)
+			if(i > 6)
 			{
 				halfHeartY = 40 - 8;
 				halfHeartX = 176 + ((i%7) * 8);
@@ -1802,12 +1882,12 @@ function drawHUD(offset)
 		}	
 	}
 	
-	if(halfHearts &gt; 0 &amp;&amp; fullHearts &gt;= 1)
+	if(halfHearts > 0 && fullHearts >= 1)
 	{
 		ctx.drawImage(hud, 636, 117, 8, 8, 
 				halfHeartX, halfHeartY + offset, 8, 8);
 	}
-	else if(halfHearts &gt; 0 &amp;&amp; fullHearts == 0)
+	else if(halfHearts > 0 && fullHearts == 0)
 	{
 		ctx.drawImage(hud, 636, 117, 8, 8, 
 				176, 40 + offset, 8, 8);
@@ -1819,7 +1899,7 @@ function drawHUD(offset)
 	ctx.drawImage(hud, 354, 36, 24, 6, 
 				96, 10 + offset, 24, 50);
 	///124
-	if(rupeeAmount &lt; 100)
+	if(rupeeAmount < 100)
 	{
 		ctx.drawImage(hud, 519, 117, 8, 8, 
 				96, 16 + offset, 8, 8);
@@ -1880,9 +1960,12 @@ function drawGameStart()
 
 function linkCollision(x, y, objects)
 {
-	for(let i = 0; i <xxxxxxs.length; i++)="" {="" if="" (x="" <="objects[i].x" +="" objects[i].width="" &&="" x="" 16="">= objects[i].x &amp;&amp;
-		   y + 10 &lt;= objects[i].y + objects[i].height &amp;&amp;
-		   y + 16 &gt;= objects[i].y ) {
+	for(let i = 0; i < objects.length; i++)
+	{
+		if (x <= objects[i].x + objects[i].width &&
+		   x + 16 >= objects[i].x &&
+		   y + 10 <= objects[i].y + objects[i].height &&
+		   y + 16 >= objects[i].y ) {
 				return true;
 			}
 	}
@@ -1891,9 +1974,9 @@ function linkCollision(x, y, objects)
 
 function alreadyContainsPortal(x,y)
 {
-	for(let i = 0; i &lt; gameObjects.length; i++)
+	for(let i = 0; i < gameObjects.length; i++)
 	{
-		if(gameObjects[i].x == x &amp;&amp; gameObjects[i].y == y &amp;&amp; gameObjects[i].isPortal)
+		if(gameObjects[i].x == x && gameObjects[i].y == y && gameObjects[i].isPortal)
 		{
 			return true;
 		}
@@ -1904,9 +1987,9 @@ function alreadyContainsPortal(x,y)
 
 function addMapGameObjects(levelMap, objectArray)
 {
-	for(let i = 4; i &lt; levelMap.length; i++)
+	for(let i = 4; i < levelMap.length; i++)
 	{
-		for(let j = 0; j &lt; levelMap[0].length; j++)
+		for(let j = 0; j < levelMap[0].length; j++)
 		{
 			let linkCanWalkSpaces = [2,28,18,6,12,14,24,30,34,58,64,70,75,76,77,
 			93,94,95,111,112,113,81,82,86,99,100,101,117,118,119,87,88,89,105,
@@ -2005,22 +2088,22 @@ function drawInventoryScreen(offset)
 				0, -112 + offset, 256,  88);
 	ctx.drawImage(hud, 519, 42, 96, 48, 
 				 80, -112 + offset + 16, 96,  48);
-	if(leftPressed &amp;&amp; cursorX &gt; 126)
+	if(leftPressed && cursorX > 126)
 	{
 		leftPressed = false;
 		cursorX -= 19;
 	}
-	if(rightPressed &amp;&amp; cursorX &lt; 200)
+	if(rightPressed && cursorX < 200)
 	{
 		rightPressed = false;
 		cursorX += 19;
 	}
-	if(upPressed &amp;&amp; cursorY &gt; 42)
+	if(upPressed && cursorY > 42)
 	{
 		upPressed = false;
 		cursorY -= 19;
 	}
-	if(downPressed &amp;&amp; cursorY &lt; 74)
+	if(downPressed && cursorY < 74)
 	{
 		downPressed = false;
 		cursorY += 19;
@@ -2045,7 +2128,7 @@ function draw () {
 			if(!returnToGame)
 			{
 				inventoryOffset+=2;
-				if(inventoryOffset &gt; 184)
+				if(inventoryOffset > 184)
 				{
 					inventoryOffset = 184;
 				}
@@ -2053,7 +2136,7 @@ function draw () {
 			else
 			{
 				inventoryOffset-=2;
-				if(inventoryOffset &lt; 0)
+				if(inventoryOffset < 0)
 				{
 					inventoryOffset = 0;
 					needInventoryScreen = false;
@@ -2065,7 +2148,7 @@ function draw () {
 		else
 		{
 			invincibleTime--;
-			if(invincibleTime &lt;= 0)
+			if(invincibleTime <= 0)
 			{
 				linkIsInvincible = false;
 			}
@@ -2080,8 +2163,7 @@ function draw () {
 }
 draw();
 
-</xxxxxxs.length;></xxxxxxs.length;></xxxxxxs.length;></xxxxxxs.length;></xxxx>
+</script>
+</body>
+</html>
 
-
-
-</body></html>
